@@ -1,21 +1,32 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "testingreactappnode/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "src/**/*",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "build" }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "testingreactappnode/server.js"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "src/**/*",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/data-entry",
+      "dest": "/api/data-entry.js"
+    },
+    {
+      "src": "/api/check-duplicate",
+      "dest": "/api/check-duplicate.js"
+    },
+    {
+      "src": "/api/data",
+      "dest": "/api/data.js"
+    },
+    {
+      "src": "/api/redundant-skus",
+      "dest": "/api/redundant-skus.js"
+    }
+  ]
+}
