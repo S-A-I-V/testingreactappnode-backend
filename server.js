@@ -6,7 +6,7 @@ const app = express();
 const port = 5000;
 
 // Enable CORS to allow requests from your React app
-app.use(cors({ origin: 'https://testingreactappnode-backend.vercel.app/' }));
+app.use(cors());
 app.use(express.json());
 
 // MySQL Database Connection
