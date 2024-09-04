@@ -40,12 +40,12 @@ app.post('/api/data-entry', (req, res) => {
   });
 });
 
-// API endpoint to check for duplicate SKU ID and Station ID
+// API endpoint to check for duplicate SKU ID across all stations
 app.get('/api/check-duplicate', (req, res) => {
-  const { skuId, stationId } = req.query;
-  const query = 'SELECT COUNT(*) AS count FROM entries WHERE skuId = ? AND stationId = ?';
+  const { skuId } = req.query;
+  const query = 'SELECT COUNT(*) AS count FROM entries WHERE skuId = ?';
 
-  db.query(query, [skuId, stationId], (err, results) => {
+  db.query(query, [skuId], (err, results) => {
     if (err) {
       console.error('Error checking for duplicates:', err.stack);
       res.status(500).send('Error checking for duplicates');
@@ -91,5 +91,5 @@ app.get('/api/redundant-skus', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://192.168.27.143:${port}`);
 });
